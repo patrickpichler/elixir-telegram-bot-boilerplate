@@ -154,9 +154,9 @@ defmodule App.Commander do
           inline_query.from.id
         %{callback_query: callback_query} when not is_nil(callback_query) ->
           callback_query.message.chat.id
-        %{update: %{message: %{chat: id}}} when not is_nil(id) -> 
+        %{message: %{chat: %{id: id}}} when not is_nil(id) -> 
           id
-        %{update: %{edited_message: %{chat: id}}} when not is_nil(id) -> 
+        %{edited_message: %{chat: %{id: id}}} when not is_nil(id) -> 
           id
         _ -> raise "No chat id found!"
       end
